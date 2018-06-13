@@ -85,7 +85,7 @@ def second_pass( commands, num_frames ):
     for command in commands:
         c = command['op']
         args = command['args']
-            
+
         if(c == 'vary'):
             knob = command['knob']
             #print args
@@ -132,7 +132,7 @@ def progress(count, total, fill='#', suffix=''):
     sys.stdout.write('[%s] %s%s ...%s\r' % (bar, percents, '%', suffix))
     sys.stdout.flush()
 
-    
+
 def run(filename):
     """
     This function runs an mdl script
@@ -140,7 +140,7 @@ def run(filename):
     view = [0, 0, 1];
     ambient = [50, 50, 50]
     light = [[0.5, 0.75, 1],
-             [0, 255, 255]]
+             [0, 20, 20]]
     areflect = [0.1, 0.1, 0.1]
     dreflect = [0.5, 0.5, 0.5]
     sreflect = [0.5, 0.5, 0.5]
@@ -170,7 +170,7 @@ def run(filename):
     (basename, num_frames, cconstants) = first_pass(commands)
     #print basename
     #print num_frames
-    
+
     node_vary = second_pass( commands, num_frames )
     #print node_vary
 
