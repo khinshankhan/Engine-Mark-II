@@ -132,6 +132,7 @@ def progress(count, total, fill='#', suffix=''):
     sys.stdout.write('[%s] %s%s ...%s\r' % (bar, percents, '%', suffix))
     sys.stdout.flush()
 
+    
 def run(filename):
     """
     This function runs an mdl script
@@ -181,8 +182,7 @@ def run(filename):
         if node_vary[frame] != None:
             for knob in node_vary[frame]:
                 symbols[knob][1] = node_vary[frame][knob]
-
-        easy = []
+        easy = None
         for command in commands:
             #print command
             #print "============================================"
@@ -197,8 +197,8 @@ def run(filename):
                         [cconstants[command['constants']][0][2],
                         cconstants[command['constants']][1][2],
                         cconstants[command['constants']][2][2]]]
-
-                
+            #print command
+            #print easy
             c = command['op']
             args = command['args']
             if not args == None:
@@ -221,19 +221,19 @@ def run(filename):
                         args[0], args[1], args[2],
                         args[3], args[4], args[5])
                 matrix_mult( stack[-1], tmp )
-                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect)
+                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect, easy)
                 tmp = []
             elif c == 'sphere':
                 add_sphere(tmp,
                            args[0], args[1], args[2], args[3], step_3d)
                 matrix_mult( stack[-1], tmp )
-                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect)
+                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect, easy)
                 tmp = []
             elif c == 'torus':
                 add_torus(tmp,
                           args[0], args[1], args[2], args[3], args[4], step_3d)
                 matrix_mult( stack[-1], tmp )
-                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect)
+                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect, easy)
                 tmp = []
             elif c == 'line':
                 if isinstance(args[0], str):
@@ -282,7 +282,7 @@ def run(filename):
                 #print (command)
                 add_mesh(tmp, "obj_files/" + args[0])
                 matrix_mult( stack[-1], tmp )
-                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect)
+                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect, easy)
                 tmp = []
 
         if num_frames > 1:
