@@ -24,6 +24,7 @@ def first_pass( commands ):
     #print "\nSTART FIRST"
     basename = None
     num_frames = None
+    cconstants = {}
     for command in commands:
         #print command
         c = command['op']
@@ -39,7 +40,9 @@ def first_pass( commands ):
             if (not num_frames):
                 print "ERROR: vary found without any frame"
                 sys.exit("Exiting program")
-    
+        if c == 'constants':
+            cconstants.update({command['constants']:command['args']})
+            #cconstants = c
     if (not (num_frames == None) and (basename == None)):
         basename = 'asdf'
         sys.stdout.flush()
@@ -52,7 +55,8 @@ def first_pass( commands ):
         if not (choice == "y"):
             sys.exit("Exiting program")
     #print "END FIRST\n"
-    return (basename, num_frames)
+    print cconstants
+    return (basename, num_frames, cconstants)
 
 """======== second_pass( commands ) ==========
 
@@ -173,7 +177,7 @@ def run(filename):
         return
 
     #PASSES
-    (basename, num_frames) = first_pass(commands)
+    (basename, num_frames, cconstants) = first_pass(commands)
     #print basename
     #print num_frames
     
@@ -191,6 +195,11 @@ def run(filename):
 
         for command in commands:
             #print command
+            #print "============================================"
+            if 'constants' in command:
+                #print (command['constants'], cconstants)
+                col = cconstants[command['constants']]
+                #print col
             c = command['op']
             args = command['args']
             if not args == None:

@@ -1,6 +1,7 @@
-frames 10
+frames 1
 basename tallbuilding
-
+constants salmon 10 2 30 4 5 6 7 8 90
+constants pink 1 2 3 4 5 6 7 8 9
 push
 move 250 250 0
 push
@@ -9,4 +10,4 @@ rotate y 10
 rotate x 10
 mesh salmon :skyscraper.obj
 pop
-vary r0 0 9 0 1
+//vary r0 0 9 0 1

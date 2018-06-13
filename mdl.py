@@ -306,7 +306,7 @@ def p_command_constants(p):
     """command : CONSTANTS SYMBOL NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER
                | CONSTANTS SYMBOL NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER"""
     symbols[p[2]] = ['constants', {'red' : p[3:6], 'green' : p[6:9], 'blue' : p[9:]}]
-    cmd = {'op':p[1], 'args' : None, 'constants' : p[2] }
+    cmd = {'op':p[1], 'args' : [p[3:6], p[6:9], p[9:]], 'constants' : p[2] }
     commands.append(cmd)
 
 def p_command_light(p):
