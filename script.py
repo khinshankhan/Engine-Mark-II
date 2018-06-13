@@ -185,9 +185,9 @@ def run(filename):
         #print ("Frame:", frame)
         #sys.stdout.flush()
         progress(frame, num_frames)
-        
-        for knob in node_vary[frame]:
-            symbols[knob][1] = node_vary[frame][knob]
+        if node_vary[frame] != None:
+            for knob in node_vary[frame]:
+                symbols[knob][1] = node_vary[frame][knob]
 
         for command in commands:
             #print command
@@ -270,6 +270,12 @@ def run(filename):
                 display(screen)
             elif c == 'save':
                 save_extension(screen, args[0])
+            elif c == 'mesh':
+                #print (command)
+                add_mesh(tmp, args[0])
+                matrix_mult( stack[-1], tmp )
+                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect)
+                tmp = []
 
         if num_frames > 1:
             save_extension(screen, ("./anim/" + basename + ("%03d" % int(frame)) + ".png"))

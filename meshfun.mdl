@@ -1,0 +1,6 @@
+frames 1
+basename tallbuilding
+
+move 250 250 250
+mesh salmon :skyscraper.obj
+display

@@ -94,6 +94,44 @@ def draw_polygons( matrix, screen, zbuffer, view, ambient, light, areflect, dref
         point+= 3
 
 
+
+def add_mesh(polygons, fname):
+    #print (fname)
+    #parse .obj
+    with open(fname) as input_file:
+        v = []
+        f = []
+        for line in input_file:
+            # make line into array
+            li = line.split(" ")
+            #choose right lines
+            if (li[0] == 'v' or li[0] == 'f'):
+                #clean array
+                for i in range(len(li)):
+                    li[i] = li[i].strip()
+                    if i != 0:
+                        if (li[0] == 'v'):
+                            li[i] = float(li[i])
+                        else:
+                            li[i] = li[i].split('/')[0]
+                            li[i] = int(li[i])
+                            if (li[i] > 0):
+                                li[i] -= 1
+                #split between vertices and faces
+                if (li[0] == 'v'):
+                    v.append(li[1:])
+                else:
+                    f.append(li[1:])
+        #print f
+        for p in f: # p for polygon
+            p0 = v[p[0]]
+            for i in xrange(1, len(p) - 1):
+                #add the polygon using cross referencing from v and f
+                add_polygon(polygons,
+                                p0[0], p0[1], p0[2],
+                                v[p[i]][0], v[p[i]][1],v[p[i]][2],
+                                v[p[i + 1]][0], v[p[i + 1]][1], v[p[i + 1]][2])
+
 def add_box( polygons, x, y, z, width, height, depth ):
     x1 = x + width
     y1 = y - height

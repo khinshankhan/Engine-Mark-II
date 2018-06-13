@@ -1,8 +1,11 @@
 # G4Lyfe_Autocad-Mark-II
 
-### By Kinshan Khan and Yuanchu Liu
+### By Khinshan Khan and Yuanchu Liu
 
 ## Proposed Functionalities to Add:
+
+### TAKE IN OBJ FILES
+
 
 ### 3D Solids
 
