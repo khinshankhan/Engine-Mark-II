@@ -272,7 +272,7 @@ def run(filename):
                 save_extension(screen, args[0])
             elif c == 'mesh':
                 #print (command)
-                add_mesh(tmp, args[0])
+                add_mesh(tmp, "obj_files/" + args[0])
                 matrix_mult( stack[-1], tmp )
                 draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect)
                 tmp = []
