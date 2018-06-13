@@ -2,9 +2,11 @@ import mdl
 from display import *
 from matrix import *
 from draw import *
+#from gmath import *
 
 import sys
 
+cconstants = {}
 """======== first_pass( commands, symbols ) ==========
 
   Checks the commands array for any animation commands
@@ -24,6 +26,7 @@ def first_pass( commands ):
     #print "\nSTART FIRST"
     basename = None
     num_frames = None
+    global cconstants
     cconstants = {}
     for command in commands:
         #print command
@@ -133,27 +136,13 @@ def run(filename):
     """
     This function runs an mdl script
     """
-    view = [0,
-            0,
-            1];
-    ambient = [50,
-               50,
-               50]
-    light = [[0.5,
-              0.75,
-              1],
-             [0,
-              255,
-              255]]
-    areflect = [0.1,
-                0.1,
-                0.1]
-    dreflect = [0.5,
-                0.5,
-                0.5]
-    sreflect = [0.5,
-                0.5,
-                0.5]
+    view = [0, 0, 1];
+    ambient = [50, 50, 50]
+    light = [[0.5, 0.75, 1],
+             [0, 255, 255]]
+    areflect = [0.1, 0.1, 0.1]
+    dreflect = [0.5, 0.5, 0.5]
+    sreflect = [0.5, 0.5, 0.5]
 
     color = [0, 0, 0]
     tmp = new_matrix()
@@ -193,11 +182,23 @@ def run(filename):
             for knob in node_vary[frame]:
                 symbols[knob][1] = node_vary[frame][knob]
 
+        easy = []
         for command in commands:
             #print command
             #print "============================================"
             if 'constants' in command and command['op'] != 'constants':
-                print command
+                #print command
+                easy = [[cconstants[command['constants']][0][0],
+                        cconstants[command['constants']][1][0],
+                        cconstants[command['constants']][2][0]],
+                        [cconstants[command['constants']][0][1],
+                        cconstants[command['constants']][1][1],
+                        cconstants[command['constants']][2][1]],
+                        [cconstants[command['constants']][0][2],
+                        cconstants[command['constants']][1][2],
+                        cconstants[command['constants']][2][2]]]
+
+                
             c = command['op']
             args = command['args']
             if not args == None:
@@ -288,6 +289,14 @@ def run(filename):
             save_extension(screen, ("./anim/" + basename + ("%03d" % int(frame)) + ".png"))
 
         #reset variable for next frame
+        view = [0, 0, 1];
+        ambient = [50, 50, 50]
+        light = [[0.5, 0.75, 1],
+                [0, 255, 255]]
+        areflect = [0.1, 0.1, 0.1]
+        dreflect = [0.5, 0.5, 0.5]
+        sreflect = [0.5, 0.5, 0.5]
+
         tmp = new_matrix()
         ident( tmp )
         stack = [ [x[:] for x in tmp] ]
