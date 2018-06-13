@@ -55,7 +55,7 @@ def first_pass( commands ):
         if not (choice == "y"):
             sys.exit("Exiting program")
     #print "END FIRST\n"
-    print cconstants
+    #print cconstants
     return (basename, num_frames, cconstants)
 
 """======== second_pass( commands ) ==========
@@ -196,10 +196,8 @@ def run(filename):
         for command in commands:
             #print command
             #print "============================================"
-            if 'constants' in command:
-                #print (command['constants'], cconstants)
-                col = cconstants[command['constants']]
-                #print col
+            if 'constants' in command and command['op'] != 'constants':
+                print command
             c = command['op']
             args = command['args']
             if not args == None:
