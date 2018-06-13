@@ -170,10 +170,11 @@ def run(filename):
     (basename, num_frames, cconstants) = first_pass(commands)
     #print basename
     #print num_frames
+    if not num_frames:
+        num_frames = 1
 
     node_vary = second_pass( commands, num_frames )
     #print node_vary
-
     for frame in range(int(num_frames)):
         #sys.stdout.flush()
         #print ("Frame:", frame)
@@ -186,7 +187,7 @@ def run(filename):
         for command in commands:
             #print command
             #print "============================================"
-            if 'constants' in command and command['op'] != 'constants':
+            if 'constants' in command and command['constants'] != None and command['op'] != 'constants' and command['constants'] in cconstants:
                 #print command
                 easy = [[cconstants[command['constants']][0][0],
                         cconstants[command['constants']][1][0],
