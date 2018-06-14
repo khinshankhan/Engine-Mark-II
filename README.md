@@ -18,7 +18,7 @@
 
 #### where `<color>` is one of the names from the array
 
-#### DISCLAIMER: The user can still create constants as outlined in the spec file, however, I do some crazy math so I can't gurantee it'll be even remotely as they hoped the color would turn out (most tend to become white actually). In addition, the user shouldn't try to make a new constant with the same name as in the array (so far, it doesn't break, but some weird color stuff happens)
+#### DISCLAIMER: The user can still create constants as outlined in the spec file, however, I do some crazy math so I can't gurantee it'll be even remotely as they hoped the color would turn out (most tend to become white actually. If one pushes to go on and do this, then I suggest they use a dark background). In addition, the user shouldn't try to make a new constant with the same name as in the array (so far, it doesn't break, but some weird color stuff happens)
 
 ## Meshes
 
