@@ -20,7 +20,7 @@
 
 ## Meshes
 
-#### As outlined in the MDL.spec file, user has to put the `<object>.obj` file in the `obj_files/` directory. They can then call the `.obj` in an `.mdl` script as:
+#### As outlined in the MDL.spec file, user has to put the `<object>.obj` file in the `obj_files/` directory. They can then call the `<object>.obj` in an `.mdl` script as:
 
 `mesh <color>:<object>.obj`
 
