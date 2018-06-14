@@ -24,6 +24,14 @@
 
 `mesh <color>:mini_cooper.obj`
 
-#### where <color> is the previous feature, but it can just be left blank and default coloring (greenish, think back to the old assignments) will be used.
+#### where `<color>` is the previous feature, but it can just be left blank and default coloring (ehich is greenish blue, think back to the old assignments) will be used.
 
 #### DISCLAIMER: Only deals with `v` and `f` lines, ignores the rest (ie I don't bother with vertex normals nor textures, etcetera)
+
+## Important Notes
+
+### Not Features, But Important Notes:
+
+#### Changed directory to make it neater/ organized. The `.mdl` scripts should now be in the `inputs/` directory.
+
+#### Because of the previous change, user can now run script files either using the `makefile` commands or by running `python main.py <filename>.mdl` or `python main.py mdl/<filename>.mdl` (`makefile` takes both variants as well).
