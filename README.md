@@ -1,18 +1,16 @@
-# G4Lyfe_Autocad-Mark-II
+# G4Lyfe_Engine-Mark-II
 
-### By Khinshan Khan and Yuanchu Liu
+## By Khinshan Khan (Period 10)
 
-## Proposed Functionalities to Add:
+#### The following outlines the features I implemented beyond the course requirements:
 
-### TAKE IN OBJ FILES
+### Meshes
 
+#### As outlined in the MDL.spec file, user has to put the `.obj` file in the `obj_files/` directory. They can then call the file in an `.mdl` script as
 
-### 3D Solids
+`mesh <color>:mini_cooper.obj`
 
-#### Spinning a curve/2D shape about an axis
+where <color> is the next feature, but it can just be left blank and default coloring will be used.
 
-For example, spinning a { shaped curve around a vertical axis gets a vaselike solid.
+DISCLAIMER: Only deals with `v` and `f` lines, ignores the rest (ie I don't bother with vertex normals nor textures, etcetera)
 
-#### Following a 2D shape along a curve 
-
-For example, following a circle along a curve gets a curved pipe.

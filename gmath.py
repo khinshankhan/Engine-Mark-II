@@ -26,6 +26,23 @@ def get_lighting(normal, view, ambient, light, areflect, dreflect, sreflect ):
 
     return i
 
+#janky lighting functions
+def jget_lighting(normal, view, ambient, light, areflect, dreflect, sreflect ):
+    normalize(normal)
+    normalize(light[LOCATION])
+    normalize(view)
+
+    a = calculate_ambient(ambient, areflect)
+    d = calculate_diffuse(light, dreflect, normal)
+    s = calculate_specular(light, sreflect, view, normal)
+
+    i = [0, 0, 0]
+    i[RED] = int(a[RED] + d[RED] + s[RED])
+    i[GREEN] = int(a[GREEN] + d[GREEN] + s[GREEN])
+    i[BLUE] = int(a[BLUE] + d[BLUE] + s[BLUE])
+    jlimit_color(i)
+
+    return i
 
 def calculate_ambient(alight, areflect):
     a = [0, 0, 0]
@@ -68,6 +85,10 @@ def limit_color(color):
     color[GREEN] = 255 if color[GREEN] > 255 else color[GREEN]
     color[BLUE] = 255 if color[BLUE] > 255 else color[BLUE]
 
+def jlimit_color(color):
+    color[RED] = color[RED]%255 if color[RED] > 255 else color[RED]
+    color[GREEN] = color[GREEN]%255 if color[GREEN] > 255 else color[GREEN]
+    color[BLUE] = color[BLUE]%255 if color[BLUE] > 255 else color[BLUE]
 
 #vector functions
 def normalize(vector):

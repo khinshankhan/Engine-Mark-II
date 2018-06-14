@@ -213,14 +213,16 @@ def run(filename):
             if 'constants' in command and command['constants'] != None and command['op'] != 'constants' and command['constants'] in cconstants:
                 #print command
                 easy = [[cconstants[command['constants']][0][0],
-                        cconstants[command['constants']][1][0],
-                        cconstants[command['constants']][2][0]],
+                         cconstants[command['constants']][1][0],
+                         cconstants[command['constants']][2][0]],
                         [cconstants[command['constants']][0][1],
-                        cconstants[command['constants']][1][1],
-                        cconstants[command['constants']][2][1]],
+                         cconstants[command['constants']][1][1],
+                         cconstants[command['constants']][2][1]],
                         [cconstants[command['constants']][0][2],
-                        cconstants[command['constants']][1][2],
-                        cconstants[command['constants']][2][2]]]
+                         cconstants[command['constants']][1][2],
+                         cconstants[command['constants']][2][2]],
+                        command['constants']
+                ]
             #print command
             #print easy
             c = command['op']

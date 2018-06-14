@@ -1,5 +1,5 @@
-//frames 10
-//basename tallbuilding
+frames 50
+basename somewhere
 
 push
 move 250 250 0
@@ -7,7 +7,18 @@ push
 scale 6 6 6
 rotate y 10
 rotate x 10
-mesh pink:skyscraper.obj
+mesh coolyellow:skyscraper.obj
 pop
-//vary r0 0 9 0 1
-display
+pop
+push
+move 250 250 0
+
+push
+rotate z 360 spinny
+move 80 200 0
+rotate x 90
+rotate y 180
+rotate z 360 spinny
+mesh coolpink:mini_cooper.obj
+pop
+vary spinny 0 49 0 1

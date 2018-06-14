@@ -71,13 +71,17 @@ def draw_polygons( matrix, screen, zbuffer, view, ambient, light, areflect, dref
                 areflect = calculate_ambient(ambient, easy[0])
                 dreflect = calculate_diffuse(light, easy[1], normal)
                 sreflect = calculate_specular(light, easy[2], view, normal)
-
+                '''
                 print "====================================="
                 print areflect
                 print dreflect
                 print sreflect
+                '''
             #print areflect, dreflect, sreflect
             color = get_lighting(normal, view, ambient, light, areflect, dreflect, sreflect )
+            cool = ['coolyellow', 'coolpink', 'coolblue']
+            if easy is not None and easy[3] in cool:
+                color = jget_lighting(normal, view, ambient, light, areflect, dreflect, sreflect )
             scanline_convert(matrix, point, screen, zbuffer, color)
 
             # draw_line( int(matrix[point][0]),
@@ -151,6 +155,7 @@ def add_mesh(polygons, fname):
         f = []
         for line in input_file:
             # make line into array
+            line = " ".join(line.split())
             li = line.split(" ")
             #choose right lines
             if (li[0] == 'v' or li[0] == 'f'):

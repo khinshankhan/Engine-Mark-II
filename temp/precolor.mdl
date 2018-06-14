@@ -1,11 +1,20 @@
+// binary
 constants black 0 0 0 0 0 0 0 0 0
 constants white 1 1 1 1 1 1 1 1 1
 
+// basic rgb
 constants red 1 1 1 0 0 0 0 0 0
 constants green 0 0 0 1 1 1 0 0 0
 constants blue 0 0 0 0 0 0 1 1 1
 
+// mix
 constants pink 1 1 1 0 0 0 1 1 1
 constants yellow 1 1 1 1 1 1 0 0 0 
 constants cyan 0 0 0 1 1 1 1 1 1
+
+//cool stuff
+constants coolyellow 1 1 1 1 1 1 0 0 0
+constants coolblue 0 0 0 1 1 1 1 1 1
+constants coolpink 1 1 1 0 0 0 1 1 1
+
 
