@@ -3,6 +3,7 @@ from display import *
 from matrix import *
 from draw import *
 #from gmath import *
+import os
 
 import sys
 
@@ -171,12 +172,20 @@ def run(filename):
     consts = ''
     coords = []
     coords1 = []
-
+    # creation of macros on top of file
+    temp_file = 'temp/temp.mdl'
+    filenames = ['temp/precolor.mdl', filename]
+    with open(temp_file, 'w') as outfile:
+        for fname in filenames:
+            with open(fname) as infile:
+                outfile.write(infile.read())
+    filename = temp_file
     p = mdl.parseFile(filename)
 
     if p:
         (commands, symbols) = p
     else:
+        os.remove(temp_file)
         print "Parsing failed."
         return
 
@@ -324,5 +333,6 @@ def run(filename):
     sys.stdout.flush()
     print
     print
+    os.remove(temp_file)
     if num_frames > 1:
         make_animation(basename)
