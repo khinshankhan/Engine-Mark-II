@@ -10,6 +10,8 @@
 
 `[black, white, red, green, blue, pink, yellow, cyan, coolyellow, coolblue, coolpink]`
 
+#### (The beginning 6 are just as you expect them to be, the `cool` colors are special. They use some funky math to look... cool)
+
 #### These should be used similarly to how constants were described in the spec file:
 
 `mesh <color>:skyscraper.obj`
